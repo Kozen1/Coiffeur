@@ -1,10 +1,10 @@
 <div class="header">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-4">
-				<img src="images/logo.jpg" width="100px">
+			<div class="col-lg-1">
+				<img src="/images/logo.jpg" width="100px">
 			</div>
-			<div class="col-lg-8">
+			<div class="col-lg-10">
 				<div class="navigation">
 					<div id="navigation">
 						<ul>
@@ -17,7 +17,31 @@
 							<li class="active">
 								<a href="/about" title="About">L'atelier du barbier</a>
 							</li>
-							<a href="/prestations" class="btn btn-default mb10">PRENDRE RDV</a>
+							<a href="/rendezvous/new" class="btn btn-default mb10">PRENDRE RDV</a>
+							{% if is_granted('ROLE_USER') %}
+								<li>
+									<a title="About">Mon compte</a>
+									<ul>
+                                        <li><a href="/user" title="Profile">Mon profil</a></li>
+                                        <li><a href="/rendezvous/" title="My appointments">Mes rendez-vous</a></li>
+                                    </ul>
+								</li>
+								<li class="active">
+									<a href="/logout" title="{{ path('app_logout') }}">Se déconnecter</a>
+								</li>
+							{% else %}
+								<li class="active">
+									<a href="/login" title="{{ path('app_login') }}">Se connecter</a>
+								</li>
+								<li class="active">
+									<a href="/register" title="{{ path('app_login') }}">S'inscrire</a>
+								</li>
+							{% endif %}
+							{% if is_granted('ROLE_ADMIN') %}
+								<li class="active">
+									<a href="/admin" title="">Administration</a>
+								</li>
+							{% endif %}
 						</ul>
 					</div>
 				</div>
@@ -25,4 +49,3 @@
 		</div>
 	</div>
 </div>
-

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rendezvous
+{% endblock %}
+
+{% block body %}
+	<h1 class="container">Modification du rendez vous de
+		{{ app.user.lastname }}
+		{{ app.user.firstname }}</h1>
+	<table class="table">
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Rendezvous</th>
+				<td>{{ rendezvous.rendezvous ? rendezvous.rendezvous|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+			<tr>
+				<th>La prestation</th>
+				<td>{{ rendezvous.prestations.nom }}</td>
+			</tr>
+			<tr>
+				<th>Le prix</th>
+				<td>{{ rendezvous.prestations.tarif }}€</td>
+			</tr>
+			<tr>
+				<th>La durée</th>
+				<td>{{ rendezvous.prestations.duree|date('H') }}H
+					{{ rendezvous.prestations.duree|date('i') }}min</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="container">
+		<a class=" btn btn-default mb10" href="{{ path('app_rendezvous_index') }}">Retour en arrière</a>
+        <a class=" btn btn-default mb10" href="{{ path('app_rendezvous_edit', {'id': rendezvous.id}) }}">Modifier</a>
+        {{ include('rendezvous/_delete_form.html.twig') }}
+	</div>
+
+	
+{% endblock %}

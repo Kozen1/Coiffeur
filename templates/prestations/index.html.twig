@@ -23,4 +23,86 @@
 			</div>
 		</div>
 	</div>
+	<div class="container">
+		<div class="col-lg-5 col-md-4 col-sm-4 col-xs-12">
+			<div class="service-block">
+				<div>
+					<h2 class="title">
+						COUPE CHEVEUX
+					</h2>
+					{% for cheveux in cheveux %}
+					<div class="container">
+						<div class="box">{{ cheveux.nom }} {{ cheveux.tarif }}€ - {{ cheveux.duree|date('i') }}min
+							<a href="/" class="btn btn-default" style="float:right;">Choisir</a>
+							<div class="details-containers">
+								<p class="summary">Plus de détails
+									<span class="more-details-link">&#9660;</span>
+								</p>
+								<div class="text" style="display: none;">
+									{{ cheveux.description|raw }}
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					<h2 class="title">
+						COUPE BARBE
+					</h2>
+					{% for barbe in barbe %}
+					<div class="container">
+						<div class="box">{{ barbe.nom }} {{ barbe.tarif }}€ - {{ barbe.duree|date('i') }}min
+							<a href="/" class="btn btn-default" style="float:right;">Choisir</a>
+							<div class="details-containers">
+								<p class="summary">Plus de détails
+									<span class="more-details-link">&#9660;</span>
+								</p>
+								<div class="text" style="display: none;">
+									{{ barbe.description|raw }}
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					<h2 class="title">
+						FORFAITS CHEVEUX/BARBE
+					</h2>
+					{% for forfaits in forfaits %}
+					<div class="container">
+						<div class="box">{{ forfaits.nom }} {{ forfaits.tarif }}€ - {{ forfaits.duree|date('H') }}H {{ forfaits.duree|date('i') }}min
+							<a href="/" class="btn btn-default" style="float:right;">Choisir</a>
+							<div class="details-containers">
+								<p class="summary">Plus de détails
+									<span class="more-details-link">&#9660;</span>
+								</p>
+								<div class="text" style="display: none;">
+									{{ forfaits.description|raw }}
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					<h2 class="title">
+						TECHNIQUES
+					</h2>
+					{% for techniques in techniques %}
+					<div class="container">
+						<div class="box">{{ techniques.nom }} {{ techniques.tarif }}€ - {{ techniques.duree|date('i') }}min
+							<a href="/" class="btn btn-default" style="float:right;">Choisir</a>
+							<div class="details-containers">
+								<p class="summary">Plus de détails
+									<span class="more-details-link">&#9660;</span>
+								</p>
+								<div class="text" style="display: none;">
+									{{ techniques.description|raw }}
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					<br/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="./js/arrow.js"></script>
 {% endblock %}

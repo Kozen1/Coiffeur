@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rendezvous index
+{% endblock %}
+
+{% block body %}
+	<h1 class="container">Rendez vous de
+		{{ app.user.lastname }}
+		{{ app.user.firstname }}</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Date du rendez vous</th>
+				<th>La prestation</th>
+				<th>Le prix</th>
+				<th>La durée</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for rendezvous in rendezvous %}
+				<tr>
+					<td>{{ rendezvous.rendezvous ? rendezvous.rendezvous|date('Y-m-d H:i:s') }}
+					</td>
+					<td>{{ rendezvous.prestations.nom }}</td>
+					<td>{{ rendezvous.prestations.tarif }}€</td>
+					<td>{{ rendezvous.prestations.duree|date('H') }}H
+						{{ rendezvous.prestations.duree|date('i') }}min</td>
+					<td>
+						<a href="{{ path('app_rendezvous_show', {'id': rendezvous.id}) }}">show</a>
+						<a href="{{ path('app_rendezvous_edit', {'id': rendezvous.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="3">Pas de rendez vous</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<div class="container">
+		<a class=" btn btn-default mb10" href="{{ path('app_rendezvous_new') }}">Prendre un rendez vous</a>
+	</div>
+{% endblock %}

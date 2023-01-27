@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de {{ app.user.lastname }} {{ app.user.firstname }}
+{% endblock %}
+
+{% block javascripts %}{% endblock %}
+
+{% block body %}
+	{% for message in app.flashes('message') %}
+		<div class="b1">
+			<div style="color: green; font-weight: bold;">{{message}}</div>
+		</div>
+	{% endfor %}
+	<div class="b1 mt20 mb20">Profil de {{ app.user.lastname }} {{ app.user.firstname }}</div>
+	<div class="grid">
+		<div>Nom :</div>
+		<div>{{ app.user.firstname }}</div>
+		<div>Prénom :</div>
+		<div>{{ app.user.lastname }}</div>
+		<div>Email :</div>
+		<div>{{ app.user.email }}</div>
+		<div>Adresse :</div>
+		<div>{{ app.user.adress }}</div>
+		<div>Code postal :</div>
+		<div>{{ app.user.zipcode }}</div>
+		<div>Ville :</div>
+		<div>{{ app.user.city }}</div>
+	</div>
+    <div><a href="{{ path('app_profile_edit') }}" class="btn btn-default mb10 b1">Modifier le profil</a></div>
+    <div><a href="{{ path('app_pass_edit') }}" class="btn btn-default mb10 b1">Modifier le mot de passe</a></div>
+{% endblock %}

@@ -1,0 +1,99 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div id="calendrier"></div>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+{% block javascripts %}
+<script>
+    window.onload = () => {
+        let calendarElt = document.querySelector("#calendrier")
+        
+        let calendar = new FullCalendar.Calendar(calendarElt, {
+            initialView: 'timeGridWeek',
+            locale: 'fr',
+            timeZone: 'Europe/Paris',
+            headerToolbar: {
+                start: 'prev,next',
+                center: 'title',
+            },
+            allDaySlot: false,
+            slotMinTime: '09:00:00',
+            slotMaxTime: '19:30:00',
+            slotDuration: '00:30:00',
+            slotLabelFormat: {
+                hour: 'numeric',
+                minute: '2-digit',
+                omitZeroMinute: false,
+                meridiem: 'short'
+            },
+            slotLabelInterval: '00:30:00',
+            
+            businessHours: [
+                {
+                    daysOfWeek: [2],
+                    startTime: '09:00',
+                    endTime: '12:00'
+                },
+                {
+                    daysOfWeek: [2],
+                    startTime: '13:30',
+                    endTime: '19:00'
+                },
+                {
+                    daysOfWeek: [3],
+                    startTime: '09:00',
+                    endTime: '12:00'
+                },
+                {
+                    daysOfWeek: [3],
+                    startTime: '13:00',
+                    endTime: '19:30'
+                },
+                {
+                    daysOfWeek: [4],
+                    startTime: '09:30',
+                    endTime: '12:00'
+                },
+                {
+                    daysOfWeek: [4],
+                    startTime: '14:00',
+                    endTime: '18:30'
+                },
+                {
+                    daysOfWeek: [5],
+                    startTime: '09:00',
+                    endTime: '12:00'
+                },
+                {
+                    daysOfWeek: [5],
+                    startTime: '13:30',
+                    endTime: '19:30'
+                },
+                {
+                    daysOfWeek: [6],
+                    startTime: '09:00',
+                    endTime: '12:00'
+                },
+                {
+                    daysOfWeek: [6],
+                    startTime: '13:30',
+                    endTime: '17:30'
+                }
+            ],
+            events: [
+                {
+                    startTime: '09:00:00',
+                    endTime: '09:30:00',
+                    allDay: false,
+                    repeat: {
+                        excludedDow: [1, 2, 5],
+                        type: 'weekly'
+                    }
+                }
+            ]
+        });
+        calendar.render()
+    }
+</script>
+{% endblock %}

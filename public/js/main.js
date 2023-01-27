@@ -1,0 +1,2 @@
+import FullCalendar from 'fullcalendar';
+

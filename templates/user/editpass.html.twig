@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du mot de passe de {{ app.user.lastname }} {{ app.user.firstname }}
+{% endblock %}
+
+{% block javascripts %}{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('error') %}
+		<div class="b1">
+			<div style="color: red; font-weight: bold;">{{message}}</div>
+		</div>
+	{% endfor %}
+	<div class="b1 mt20 mb20">Modification du mot de passe de {{ app.user.lastname }} {{ app.user.firstname }}</div>
+	<div class="b1 mt20 mb20">
+        <form method="post">
+            <div class="form-field">
+                <label for="pass">Mot de passe</label>
+                <input type="password" id="pass" name="pass" class="form-control">
+            </div>
+            <div class="form-field">
+                <label for="pass2">Confirmer le mot de passe</label>
+                <input type="password" id="pass2" name="pass2" class="form-control">
+            </div>
+            <button class="btn btn-default mb10 b1">Valider</button>
+        </form>
+	</div>
+{% endblock %}

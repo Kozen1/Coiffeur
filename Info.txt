@@ -1,0 +1,1 @@
+CRUD pour envoyer les coupes cheveux/barbes et les forfaits dans la base de données
