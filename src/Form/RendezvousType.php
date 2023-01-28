@@ -21,13 +21,43 @@ class RendezvousType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $userId = $options['user'];
+        $options = array();
+        $options['hours'] = [
+            [
+                'day' => 2,
+                'hours' => [9,10,11,12,13,14,15,16,17,18]
+            ],
+            [
+                'day' => 3,
+                'hours' => [9,10,11,12,13,14,15]
+            ],
+            [
+                'day' => 4,
+                'hours' => [9,10,11,12,13,14,15,16,17]
+            ],
+            [
+                'day' => 5,
+                'hours' => [9,10,11,12,13,14,15,16,17,18,19,20]
+            ],
+        ];
+        $hours = array();
+        foreach ($options['hours'] as $day) {
+            foreach($day['hours'] as $hour){
+                $hours[] = $hour;
+            }
+        }
         $builder    
         ->add('user', HiddenType::class)
+        ->add('rendezvous', DateTimeType::class, [
+            'date_widget' => 'single_text',
+            'days' => [2,3,4,5],
+            'hours' => $hours,
+        ])
         ->add('prestations', EntityType::class, [
             'class' => Prestations::class,
             'choice_label' => function (Prestations $prestations) {
-            return $prestations->getNom() . ' - ' . $prestations->getTarif().'€';
-        },
+                return $prestations->getNom() . ' - ' . $prestations->getTarif().'€';
+            },
         ])
         ->add('employe')   
         ;

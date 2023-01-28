@@ -20,80 +20,54 @@
             allDaySlot: false,
             slotMinTime: '09:00:00',
             slotMaxTime: '19:30:00',
-            slotDuration: '00:30:00',
             slotLabelFormat: {
-                hour: 'numeric',
+                hour: '2-digit',
                 minute: '2-digit',
                 omitZeroMinute: false,
                 meridiem: 'short'
             },
             slotLabelInterval: '00:30:00',
-            
             businessHours: [
-                {
-                    daysOfWeek: [2],
-                    startTime: '09:00',
-                    endTime: '12:00'
-                },
-                {
-                    daysOfWeek: [2],
-                    startTime: '13:30',
-                    endTime: '19:00'
-                },
-                {
-                    daysOfWeek: [3],
-                    startTime: '09:00',
-                    endTime: '12:00'
-                },
-                {
-                    daysOfWeek: [3],
-                    startTime: '13:00',
-                    endTime: '19:30'
-                },
-                {
-                    daysOfWeek: [4],
-                    startTime: '09:30',
-                    endTime: '12:00'
-                },
-                {
-                    daysOfWeek: [4],
-                    startTime: '14:00',
-                    endTime: '18:30'
-                },
-                {
-                    daysOfWeek: [5],
-                    startTime: '09:00',
-                    endTime: '12:00'
-                },
-                {
-                    daysOfWeek: [5],
-                    startTime: '13:30',
-                    endTime: '19:30'
-                },
-                {
-                    daysOfWeek: [6],
-                    startTime: '09:00',
-                    endTime: '12:00'
-                },
-                {
-                    daysOfWeek: [6],
-                    startTime: '13:30',
-                    endTime: '17:30'
-                }
+                { daysOfWeek: [2], startTime: '09:00', endTime: '12:00' },
+                { daysOfWeek: [2], startTime: '13:30', endTime: '19:00' },
+                { daysOfWeek: [3], startTime: '09:00', endTime: '12:00' },
+                { daysOfWeek: [3], startTime: '13:00', endTime: '19:30' },
+                { daysOfWeek: [4], startTime: '09:30', endTime: '12:00' },
+                { daysOfWeek: [4], startTime: '14:00', endTime: '18:30' },
+                { daysOfWeek: [5], startTime: '09:00', endTime: '12:00' },
+                { daysOfWeek: [5], startTime: '13:30', endTime: '19:30' },
+                { daysOfWeek: [6], startTime: '09:00', endTime: '12:00' },
+                { daysOfWeek: [6], startTime: '13:30', endTime: '17:30' },
             ],
             events: [
-                {
-                    startTime: '09:00:00',
-                    endTime: '09:30:00',
-                    allDay: false,
-                    repeat: {
-                        excludedDow: [1, 2, 5],
-                        type: 'weekly'
-                    }
-                }
-            ]
+                // le matin
+                { startTime: '09:00:00', endTime: '09:30:00', daysOfWeek: [2,3,5,6], title: '9h00'},
+                { startTime: '09:30:00', endTime: '10:00:00', daysOfWeek: [2,3,4,5,6], title: '9h30'},
+                { startTime: '10:00:00', endTime: '10:30:00', daysOfWeek: [2,3,4,5,6], title: '10h00'},
+                { startTime: '10:30:00', endTime: '11:00:00', daysOfWeek: [2,3,4,5,6], title: '10h30'},
+                { startTime: '11:00:00', endTime: '11:30:00', daysOfWeek: [2,3,4,5,6], title: '11h00'},
+                { startTime: '11:30:00', endTime: '12:00:00', daysOfWeek: [2,3,4,5,6], title: '11h30'},
+                // l'aprem
+                { startTime: '13:00:00', endTime: '13:30:00', daysOfWeek: [3], title: '13h00'},
+                { startTime: '13:30:00', endTime: '14:00:00', daysOfWeek: [2,3,4,5,6], title: '13h30'},
+                { startTime: '14:00:00', endTime: '14:30:00', daysOfWeek: [2,3,4,5,6], title: '14h00'},
+                { startTime: '14:30:00', endTime: '15:00:00', daysOfWeek: [2,3,4,5,6], title: '14h30'},
+                { startTime: '15:00:00', endTime: '15:30:00', daysOfWeek: [2,3,4,5,6], title: '15h00'},
+                { startTime: '15:30:00', endTime: '16:00:00', daysOfWeek: [2,3,4,5,6], title: '15h30'},
+                { startTime: '16:00:00', endTime: '16:30:00', daysOfWeek: [2,3,4,5,6], title: '16h00'},
+                { startTime: '16:30:00', endTime: '17:00:00', daysOfWeek: [2,3,4,5,6], title: '16h30'},
+                { startTime: '17:00:00', endTime: '17:30:00', daysOfWeek: [2,3,4,5,6], title: '17h00'},
+                { startTime: '17:30:00', endTime: '18:00:00', daysOfWeek: [2,3,4,5], title: '17h30'},
+                { startTime: '18:00:00', endTime: '18:30:00', daysOfWeek: [2,3,4,5], title: '18h00'},
+                { startTime: '18:30:00', endTime: '19:00:00', daysOfWeek: [2,3,5], title: '18h30'},
+                { startTime: '19:00:00', endTime: '19:30:00', daysOfWeek: [2,3,5], title: '19h00'}
+            ],
+            eventContent: function(eventInfo) {
+                return eventInfo.event.title;
+            },       
         });
         calendar.render()
     }
 </script>
 {% endblock %}
+        
