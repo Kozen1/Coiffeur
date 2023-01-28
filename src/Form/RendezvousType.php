@@ -24,20 +24,12 @@ class RendezvousType extends AbstractType
         $options = array();
         $options['hours'] = [
             [
-                'day' => 2,
-                'hours' => [9,10,11,12,13,14,15,16,17,18]
+                'day' => 28,
+                'hours' => [9]
             ],
             [
-                'day' => 3,
-                'hours' => [9,10,11,12,13,14,15]
-            ],
-            [
-                'day' => 4,
-                'hours' => [9,10,11,12,13,14,15,16,17]
-            ],
-            [
-                'day' => 5,
-                'hours' => [9,10,11,12,13,14,15,16,17,18,19,20]
+                'day' => 29,
+                'hours' => [9,10]
             ],
         ];
         $hours = array();
@@ -46,12 +38,17 @@ class RendezvousType extends AbstractType
                 $hours[] = $hour;
             }
         }
+        $days = range(date('d'), date('t'));
         $builder    
         ->add('user', HiddenType::class)
         ->add('rendezvous', DateTimeType::class, [
-            'date_widget' => 'single_text',
-            'days' => [2,3,4,5],
+            'widget' => 'choice',
+            'date_widget' => 'choice',
+            'time_widget' => 'choice',
+            'years' => range(date('Y'), date('Y')+1),
+            'days' => $days,
             'hours' => $hours,
+            'minutes' => [0, 30],
         ])
         ->add('prestations', EntityType::class, [
             'class' => Prestations::class,

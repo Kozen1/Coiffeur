@@ -64,10 +64,19 @@
             ],
             eventContent: function(eventInfo) {
                 return eventInfo.event.title;
-            },       
+            },    
         });
         calendar.render()
     }
+
+    calendar.on('eventClick', function(info) {
+    // Récupération de la valeur de l'événement
+        var title = info.event.title;
+        var start = info.event.start;
+        var end = info.event.end;
+        console.log(title + " débute à " + start + " et se termine à " + end);
+    });
+
 </script>
 {% endblock %}
         

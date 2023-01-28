@@ -800,6 +800,9 @@ opacity: .5; }
     padding-bottom: 20px;
 }
 
+.disabled {
+    display: none;
+}
 /*==========  Non-Mobile First Method  ==========*/
 
     /* Large Devices, Wide Screens */
