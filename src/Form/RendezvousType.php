@@ -38,7 +38,8 @@ class RendezvousType extends AbstractType
                 $hours[] = $hour;
             }
         }
-        $days = range(date('d'), date('t'));
+        $month = range(date('m'), 12);
+        $days = range(date('d'), cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y')));
         $builder    
         ->add('user', HiddenType::class)
         ->add('rendezvous', DateTimeType::class, [
@@ -46,6 +47,7 @@ class RendezvousType extends AbstractType
             'date_widget' => 'choice',
             'time_widget' => 'choice',
             'years' => range(date('Y'), date('Y')+1),
+            'months' => $month,
             'days' => $days,
             'hours' => $hours,
             'minutes' => [0, 30],
