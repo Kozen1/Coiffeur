@@ -14,9 +14,6 @@ class Rendezvous
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $rendezvous = null;
-
     #[ORM\ManyToOne(inversedBy: 'rendezvous')]
     private ?Employe $employe = null;
 
@@ -28,21 +25,15 @@ class Rendezvous
     #[ORM\JoinColumn(nullable: false)]
     private ?Prestations $prestations = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $time = null;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getRendezvous(): ?\DateTimeInterface
-    {
-        return $this->rendezvous;
-    }
-
-    public function setRendezvous(\DateTimeInterface $rendezvous): self
-    {
-        $this->rendezvous = $rendezvous;
-
-        return $this;
     }
 
     public function getEmploye(): ?Employe
@@ -77,6 +68,30 @@ class Rendezvous
     public function setPrestations(?Prestations $prestations): self
     {
         $this->prestations = $prestations;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getTime(): ?\DateTimeInterface
+    {
+        return $this->time;
+    }
+
+    public function setTime(\DateTimeInterface $time): self
+    {
+        $this->time = $time;
 
         return $this;
     }

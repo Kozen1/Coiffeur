@@ -11,6 +11,7 @@
 		<thead>
 			<tr>
 				<th>Date du rendez vous</th>
+				<th>Heure du rendez vous</th>
 				<th>La prestation</th>
 				<th>Le prix</th>
 				<th>La durée</th>
@@ -20,8 +21,8 @@
 		<tbody>
 			{% for rendezvous in rendezvous %}
 				<tr>
-					<td>{{ rendezvous.rendezvous ? rendezvous.rendezvous|date('Y-m-d H:i:s') }}
-					</td>
+					<td>{{ rendezvous.date|date('Y-m-d') }}</td>
+					<td>{{ rendezvous.time|date('H:i') }}</td>
 					<td>{{ rendezvous.prestations.nom }}</td>
 					<td>{{ rendezvous.prestations.tarif }}€</td>
 					<td>{{ rendezvous.prestations.duree|date('H') }}H
