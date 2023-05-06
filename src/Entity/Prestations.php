@@ -125,7 +125,7 @@ class Prestations
 
     public function __toString()
     {
-        return $this->id;
+        return $this->nom;
     }
 
     public function getDescription(): ?string
