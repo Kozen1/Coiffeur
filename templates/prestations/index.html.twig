@@ -99,6 +99,24 @@
 						</div>
 					</div>
 					{% endfor %}
+					<h2 class="title">
+						APPRENTISSAGE LOUMIS
+					</h2>
+					{% for apprentissage in apprentissage %}
+					<div class="container">
+						<div class="box">{{ apprentissage.nom }} {{ apprentissage.tarif }}€ - {{ apprentissage.duree|date('i') }}min
+							<a href="{{ path('app_rendezvous_new') }}" class="btn btn-default" style="float:right;">Choisir</a>
+							<div class="details-containers">
+								<p class="summary">Plus de détails
+									<span class="more-details-link">&#9660;</span>
+								</p>
+								<div class="text" style="display: none;">
+									{{ apprentissage.description|raw }}
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
 					<br/>
 				</div>
 			</div>

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Rendezvous;
 use App\Entity\Type;
 use App\Entity\Employe;
 use App\Entity\Prestations;
@@ -41,6 +42,8 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::section('L\'atelier du barbier');
 
+        yield MenuItem::linktoRoute('Accueil', 'fas fa-home', 'app_home');
+
         yield MenuItem::section('Prestations');
 
         yield MenuItem::subMenu('Actions', 'fas fa-bars')->setSubItems([
@@ -60,6 +63,12 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Actions', 'fas fa-bars')->setSubItems([
             MenuItem::linkToCrud('Add Employe', 'fas fa-plus', Employe::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Show Employe', 'fas fa-eye', Employe::class)
+        ]);
+
+        yield MenuItem::section('Rendez-vous');
+
+        yield MenuItem::subMenu('Actions', 'fas fa-bars')->setSubItems([
+            MenuItem::linkToCrud('Show Rendez-vous', 'fas fa-eye', Rendezvous::class)
         ]);
         
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
